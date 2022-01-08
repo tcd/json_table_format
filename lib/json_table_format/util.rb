@@ -1,4 +1,5 @@
 require "json_table_format/util/json_data_type"
+require "json_table_format/util/get_length"
 require "json_table_format/util/determine_json_data_type"
 
 module JsonTableFormat

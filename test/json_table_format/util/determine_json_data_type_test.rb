@@ -3,7 +3,7 @@ require "test_helper"
 module UtilTests
   class DetermineJsonDataTypeTest < TestCase
 
-    # @return [return_type]
+    # @return [Symbol]
     def determine_json_data_type(json)
       return JsonTableFormat::Util.determine_json_data_type(JSON.parse(json))
     end

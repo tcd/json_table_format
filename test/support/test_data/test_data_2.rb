@@ -1,5 +1,5 @@
 module TestData
-  class TestCase2
+  class TestData2
 
     TYPE = :array
 

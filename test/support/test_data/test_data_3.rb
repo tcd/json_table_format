@@ -1,5 +1,5 @@
 module TestData
-  class TestCase3
+  class TestData3
 
     TYPE = :object
 

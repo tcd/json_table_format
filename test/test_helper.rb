@@ -46,8 +46,8 @@ module MiniTest::Assertions
   # Calls `assert_equal`; prints arguments if the assertion fails.
   #
   # @raise [ArgumentError] unless both arguments are strings
-  # @param want [String] Expected
-  # @param have [String] Actual
+  # @param want [String] Expected value
+  # @param have [String] Actual value
   # @return [void]
   def assert_equal_and_print(want, have)
     raise ArgumentError unless want.is_a?(String) && have.is_a?(String)

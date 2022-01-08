@@ -10,6 +10,9 @@ module TestData
     # @return [Array<String>]
     TOP_KEYS = [].freeze()
 
+    # @return [Integer]
+    LONGEST_TOP_KEY_LENGTH = 0
+
     # @return [Hash<Symbol, Integer>]
     KEY_LENGTHS = {}.freeze()
 

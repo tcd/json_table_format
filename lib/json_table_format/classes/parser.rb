@@ -16,11 +16,11 @@ module JsonTableFormat
         self.is_invalid = false
         self.json_data_type = Util::JsonDataType::OTHER
         self.input_string = input_string
-        self._parse_json()
+        self.parse_json()
       end
 
       # @return [void]
-      def _parse_json()
+      def parse_json()
         begin
           json = JSON.parse(self.input_string)
           self.input_json = json
@@ -34,6 +34,12 @@ module JsonTableFormat
 
         return nil unless self.valid?()
 
+        case self.json_data_type
+        when Util::JsonDataType::ARRAY  then self.parse_array()
+        when Util::JsonDataType::OBJECT then self.parse_object()
+        end
+
+        return nil
       end
 
       # @return [Boolean]
@@ -45,6 +51,22 @@ module JsonTableFormat
         return true if self.json_data_type == Util::JsonDataType::OBJECT
 
         return false
+      end
+
+      # @return [void]
+      def parse_array()
+        self.keys          = self.input_json.flat_map(&:keys).uniq()
+        self.key_lengths   = {}
+        self.value_lengths = {}
+      end
+
+      # @return [void]
+      def parse_object()
+        self.keys                   = self.input_json.values.flat_map(&:keys).uniq()
+        self.key_lengths            = {}
+        self.value_lengths          = {}
+        self.top_keys               = self.input_json.keys().uniq()
+        self.longest_top_key_length = 0
       end
 
     end

@@ -26,6 +26,8 @@ module TestData
       "Dark",
     ].freeze()
 
+    LONGEST_TOP_KEY_LENGTH = 11
+
     KEY_LENGTHS = {
       id: 4,
       name: 6,

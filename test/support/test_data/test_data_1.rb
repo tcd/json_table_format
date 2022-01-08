@@ -15,6 +15,8 @@ module TestData
       "age",
     ].freeze()
 
+    LONGEST_TOP_KEY_LENGTH = 11
+
     KEY_LENGTHS = {
       type: 6,
       description: 13,

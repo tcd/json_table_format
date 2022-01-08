@@ -18,15 +18,15 @@ module TestData
     LONGEST_TOP_KEY_LENGTH = 11
 
     KEY_LENGTHS = {
-      type: 6,
-      description: 13,
-      minimum: 9,
+      "type" => 6,
+      "description" => 13,
+      "minimum" => 9,
     }.freeze()
 
     VALUE_LENGTHS = {
-      type: 9,
-      description: 59,
-      minimum: 1,
+      "type" => 9,
+      "description" => 59,
+      "minimum" => 1,
     }.freeze()
 
     INPUT = <<~STR.gsub(/\n/, "").freeze()

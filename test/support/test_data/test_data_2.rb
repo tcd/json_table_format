@@ -13,21 +13,21 @@ module TestData
     ].freeze()
 
     KEY_LENGTHS = {
-      type: 6,
-      description: 13,
-      required: 10,
-      optional: 10,
-      minimum: 9,
-      maximum: 9,
+      "type" => 6,
+      "description" => 13,
+      "required" => 10,
+      "optional" => 10,
+      "minimum" => 9,
+      "maximum" => 9,
     }.freeze()
 
     VALUE_LENGTHS = {
-      type: 9,
-      description: 59,
-      required: 5,
-      optional: 5,
-      minimum: 1,
-      maximum: 1,
+      "type" => 9,
+      "description" => 59,
+      "required" => 5,
+      "optional" => 5,
+      "minimum" => 1,
+      "maximum" => 1,
     }.freeze()
 
     INPUT = <<~STR.gsub(/\n/, "").freeze()

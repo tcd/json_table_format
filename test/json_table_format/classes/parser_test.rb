@@ -15,7 +15,7 @@ module ClassesTests
         # assert_equal(case_data::LONGEST_TOP_KEY_LENGTH, parser.longest_top_key_length)
       end
       # assert_equal(case_data::KEY_LENGTHS, parser.key_lengths)
-      # assert_equal(case_data::VALUE_LENGTHS, parser.value_lengths)
+      assert_equal(case_data::VALUE_LENGTHS, parser.value_lengths)
       # assert_equal_and_print(case_data::OUTPUT, output)
     end
 

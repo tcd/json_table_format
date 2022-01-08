@@ -13,10 +13,10 @@ module TestData
     # @return [Integer]
     LONGEST_TOP_KEY_LENGTH = 0
 
-    # @return [Hash<Symbol, Integer>]
+    # @return [Hash<String, Integer>]
     KEY_LENGTHS = {}.freeze()
 
-    # @return [Hash<Symbol, Integer>]
+    # @return [Hash<String, Integer>]
     VALUE_LENGTHS = {}.freeze()
 
     # @return [String]

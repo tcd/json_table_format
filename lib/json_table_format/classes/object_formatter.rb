@@ -1,6 +1,6 @@
 module JsonTableFormat
   module Classes
-    class ArrayFormatter < Processor
+    class ObjectFormatter < Processor
 
       # @return [Parser]
       attr_accessor :parser

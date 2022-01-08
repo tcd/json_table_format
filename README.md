@@ -1,8 +1,34 @@
 # JsonTableFormat
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/json_table_format`. To experiment with that code, run `bin/console` for an interactive prompt.
+## given this input:
 
-TODO: Delete this and the text above, and describe your gem
+```json
+{ 
+    "firstName": {
+        "type": "string",
+        "description": "The person's first name."
+    },
+    "lastName": {
+        "type": "string",
+        "description": "The person's last name."
+    },
+    "age": {
+        "description": "Age in years which must be equal to or greater than zero.",
+        "type": "integer",
+        "minimum": 0
+    }
+}
+```
+
+## produce this output:
+
+```json
+{ 
+    "firstName": { "type": "string",  "description": "The person's first name." },
+    "lastName":  { "type": "string",  "description": "The person's last name." },
+    "age":       { "type": "integer", "description": "Age in years which must be equal to or greater than zero.", "minimum": 0 }
+}
+```
 
 ## Installation
 
@@ -32,7 +58,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/json_table_format.
+Bug reports and pull requests are welcome on GitHub at https://github.com/tcd/json_table_format.
 
 
 ## License

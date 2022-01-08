@@ -1,11 +1,6 @@
 module JsonTableFormat
   module Util
 
-    # # @param object [Object]
-    # # @return [Integer]
-    # def self.get_longest_lengths(object)
-    # end
-
     # @param array [Array]
     # @return [Integer]
     def self.get_longest_value_lengths_for_array(array)

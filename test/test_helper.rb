@@ -37,7 +37,7 @@ Minitest::Reporters.use!([
 #
 # @param path [Pathname]
 def file_fixture(path)
-  return File.expand_path(File.join(File.dirname(__dir__), "test", "fixtures", "files", path))
+  return File.expand_path(File.join(File.dirname(__dir__), "test", "support", "fixtures", "files", path))
 end
 
 # ==============================================================================

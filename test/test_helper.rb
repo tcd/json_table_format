@@ -21,6 +21,7 @@ end
 
 $LOAD_PATH.unshift(File.expand_path("../lib", __dir__))
 require "json_table_format"
+require_relative "./support/test_data.rb"
 require "pry"
 
 require "minitest/autorun"
@@ -36,6 +37,8 @@ Minitest::Reporters.use!([
 # ==============================================================================
 
 module MiniTest::Assertions
+
+  # @return [void]
   def assert_nothing_raised(*)
     yield
   end
@@ -45,6 +48,7 @@ module MiniTest::Assertions
   # @raise [ArgumentError] unless both arguments are strings
   # @param want [String] Expected
   # @param have [String] Actual
+  # @return [void]
   def assert_equal_and_print(want, have)
     raise ArgumentError unless want.is_a?(String) && have.is_a?(String)
 
@@ -65,6 +69,25 @@ module MiniTest::Assertions
     # assert_equal(want, have, "#{clear}\n#{'=' * 80}\nEXPECTED:\n\n#{want}\nACTUAL:\n\n#{have}\n#{'=' * 80}\n#{red}")
     assert_equal(want, have, ("\n" + clear + msg + red))
   end
+
+  # Fails unless `want` and `have` are both arrays and contain the same elements.
+  #
+  # https://stackoverflow.com/a/20334260/7687024
+  #
+  # @example
+  #   <code>assert_matched_arrays [3,2,1], [1,2,3]</code>
+  #
+  # @param want [Array] Expected value
+  # @param have [Array] Actual value
+  # @return [void]
+  def assert_matched_arrays(want, have)
+    want_array = want.to_ary
+    assert_kind_of(Array, want_array)
+    have_array = have.to_ary
+    assert_kind_of(Array, have_array)
+    assert_equal(want_array.sort, have_array.sort)
+  end
+
 end
 
 # Base class for tests

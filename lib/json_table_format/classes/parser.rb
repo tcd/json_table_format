@@ -16,6 +16,7 @@ module JsonTableFormat
         self.is_invalid = false
         self.json_data_type = Util::JsonDataType::OTHER
         self.input_string = input_string
+        self._parse_json()
       end
 
       # @return [void]
@@ -24,11 +25,26 @@ module JsonTableFormat
           json = JSON.parse(self.input_string)
           self.input_json = json
         rescue StandardError => e
-          puts(e)
+          binding.pry
           self.is_invalid = true
           return nil
         end
 
+        self.json_data_type = Util.determine_json_data_type(self.input_json)
+
+        return nil unless self.valid?()
+
+      end
+
+      # @return [Boolean]
+      def valid?()
+        return false if self.is_invalid == true
+        return false if self.json_data_type == Util::JsonDataType::OTHER
+
+        return true if self.json_data_type == Util::JsonDataType::ARRAY
+        return true if self.json_data_type == Util::JsonDataType::OBJECT
+
+        return false
       end
 
     end

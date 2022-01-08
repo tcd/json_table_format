@@ -66,17 +66,17 @@ module JsonTableFormat
       # @return [void]
       def parse_array()
         self.keys          = Util.get_array_keys(self.input_json)
-        self.key_lengths   = {}
         self.value_lengths = Util.get_longest_value_lengths_for_array(self.input_json)
+        self.key_lengths   = Util.get_key_lengths(self.keys)
       end
 
       # @return [void]
       def parse_object()
         self.keys                   = Util.get_object_keys(self.input_json)
-        self.key_lengths            = {}
         self.value_lengths          = Util.get_longest_value_lengths_for_object(self.input_json)
         self.top_keys               = self.input_json.keys().uniq()
-        self.longest_top_key_length = 0
+        self.longest_top_key_length = (self.top_keys.map(&:length).max + 2) # they're all strings, add two for when they're quoted
+        self.key_lengths            = Util.get_key_lengths(self.keys)
       end
 
     end

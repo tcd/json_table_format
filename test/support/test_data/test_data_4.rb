@@ -12,11 +12,11 @@ module TestData
     ].freeze()
 
     KEY_LENGTHS = {
-      "id": 4,
-      "name": 6,
-      "physical": 10,
-      "elemental": 11,
-      "game_order": 12,
+      "id" => 4,
+      "name" => 6,
+      "physical" => 10,
+      "elemental" => 11,
+      "game_order" => 12,
     }.freeze()
 
     VALUE_LENGTHS = {

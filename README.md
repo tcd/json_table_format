@@ -1,5 +1,17 @@
 # JsonTableFormat
 
+[![Gem](https://img.shields.io/gem/v/json_table_format)][rubygems]
+[![Build Status](https://travis-ci.org/tcd/json_table_format.svg?branch=master)][travis-ci]
+[![Coverage Status](https://coveralls.io/repos/github/tcd/json_table_format/badge.svg?branch=master)][coveralls]
+[![License](https://img.shields.io/github/license/tcd/json_table_format)][license]
+[![Documentation](http://img.shields.io/badge/docs-rubydoc.info-blue.svg)][docs]
+
+[rubygems]: https://rubygems.org/gems/eddy
+[travis-ci]: https://travis-ci.org/tcd/eddy
+[coveralls]: https://coveralls.io/github/tcd/eddy?branch=master
+[license]: https://github.com/tcd/eddy/blob/master/LICENSE.txt
+[docs]: https://www.rubydoc.info/gems/json_table_format/0.1.0
+
 ## given this input:
 
 ```json

@@ -1,7 +1,4 @@
 source("https://rubygems.org")
 
-# Specify your gem's dependencies in json_table_format.gemspec
+# Dependencies specified in json_table_format.gemspec
 gemspec()
-
-gem("minitest", "~> 5.0")
-gem("rake", "~> 12.0")

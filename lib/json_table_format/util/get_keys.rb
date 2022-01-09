@@ -6,7 +6,7 @@ module JsonTableFormat
     def self.get_array_keys(target)
       return target.flat_map(&:keys).uniq()
     rescue StandardError => e
-      binding.pry()
+      puts("JsonTableFormat::Util.get_array_keys() - error:", e)
       return []
     end
 
@@ -15,7 +15,7 @@ module JsonTableFormat
     def self.get_object_keys(target)
       return target.values.flat_map(&:keys).uniq()
     rescue StandardError => e
-      binding.pry()
+      puts("JsonTableFormat::Util.get_object_keys() - error:", e)
       return []
     end
 

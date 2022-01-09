@@ -1,15 +1,8 @@
-require "colorize"
 require "optparse"
-
-require "pry"
 
 module JsonTableFormat
   module CLI
     # JsonTableFormat command line application
-    #
-    # See:
-    #
-    # - [`ARGF`](https://ruby-doc.org/core-2.6.5/ARGF.html)
     class Program
 
       # @return [JsonTableFormat::CLI::Options]
@@ -23,43 +16,14 @@ module JsonTableFormat
 
       # @return [void]
       def main()
-        # self.parse_stdin() if STDIN.tty?()
-
-        # puts(ARGV)
-
-        # end
-
-        # puts(ARGF.inspect)
-        # if ARGF.filename == "-"
-        #   input = ARGF.read
-        #   parser = JsonTableFormat::Classes::Parser.new(input)
-        #   output = parser.format()
-        #   puts(output)
-        #   exit(0)
-        # else
-        #   input = ARGF.read
-        #   parser = JsonTableFormat::Classes::Parser.new(input)
-        #   output = parser.format()
-        #   puts(output)
-        # end
-
-        # until complete
-        #   input = ARGF.read
-        #   parser = JsonTableFormat::Classes::Parser.new(input)
-        #   output = parser.format()
-        #   puts(output)
-        #   exit(0)
-        # end
-        # ARGF.each_line { |line| puts(line) }
         exit(0)
       rescue Errno::ENOENT => e
-        self.error_file_not_found(e)
+        Helpers.error__file_not_found(e)
       end
 
       # @return [void]
       def parse_stdin()
-        # exit(0) unless ARGF.filename == "-"
-        # input = ARGF.read()
+        input = Helpers.read_stdin()
         parser = JsonTableFormat::Classes::Parser.new(input)
         output = parser.format()
         puts(output)
@@ -89,15 +53,6 @@ module JsonTableFormat
         opt_parser.parse!()
 
         return options
-      end
-
-      # @param e [Errno::ENOENT]
-      # @return [void]
-      def error_file_not_found(e)
-        print("File not found: ".colorize(color: :red))
-        print(e.message.split("- ").dig(1))
-        print("\n")
-        exit(Errno::ENOENT::Errno)
       end
 
     end

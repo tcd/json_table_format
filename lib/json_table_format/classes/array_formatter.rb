@@ -58,7 +58,7 @@ module JsonTableFormat
           output << (is_last_top_entry ? " }\n" : " },\n")
         end
 
-        output << "]\n"
+        output << "]"
         return output
       end
 

@@ -66,7 +66,7 @@ module JsonTableFormat
           i += 1
         end
 
-        output << "}\n"
+        output << "}"
         return output
       end
 

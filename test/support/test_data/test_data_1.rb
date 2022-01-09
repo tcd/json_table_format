@@ -47,7 +47,7 @@ module TestData
       }
     STR
 
-    OUTPUT = <<~STR.freeze()
+    OUTPUT = <<~STR.gsub(/\n\z/, "").freeze()
       {
         "firstName": { "type": "string",  "description": "The person's first name." },
         "lastName":  { "type": "string",  "description": "The person's last name." },

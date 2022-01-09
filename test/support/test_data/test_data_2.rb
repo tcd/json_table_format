@@ -61,7 +61,7 @@ module TestData
       ]
     STR
 
-    OUTPUT = <<~STR.freeze()
+    OUTPUT = <<~STR.gsub(/\n\z/, "").freeze()
       [
         { "type": "string",  "description": "The person's first name.",                                  "required": true,  "optional": false },
         { "type": "integer", "description": "Age in years which must be equal to or greater than zero.", "required": false, "optional": true,  "minimum": 0 },

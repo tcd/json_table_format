@@ -1,5 +1,7 @@
-require "pry"
+require "colorize"
 require "optparse"
+
+require "pry"
 
 module JsonTableFormat
   module CLI
@@ -21,7 +23,7 @@ module JsonTableFormat
 
       # @return [void]
       def main()
-        self.parse_stdin() if STDIN.tty?()
+        # self.parse_stdin() if STDIN.tty?()
 
         # puts(ARGV)
 
@@ -51,20 +53,19 @@ module JsonTableFormat
         # ARGF.each_line { |line| puts(line) }
         exit(0)
       rescue Errno::ENOENT => e
-        file_name = e.message.split("- ").dig(1)
-        # puts("error: #{e.message}")
-        puts("File not found: #{file_name}")
-        exit(Errno::ENOENT::Errno)
+        self.error_file_not_found(e)
       end
 
       # @return [void]
       def parse_stdin()
         # exit(0) unless ARGF.filename == "-"
-        input = ARGF.read()
+        # input = ARGF.read()
         parser = JsonTableFormat::Classes::Parser.new(input)
         output = parser.format()
         puts(output)
         exit(0)
+      rescue Errno::ENOENT => e
+        self.error_file_not_found(e)
       end
 
       # @return [JsonTableFormat::CLI::Options]
@@ -88,6 +89,15 @@ module JsonTableFormat
         opt_parser.parse!()
 
         return options
+      end
+
+      # @param e [Errno::ENOENT]
+      # @return [void]
+      def error_file_not_found(e)
+        print("File not found: ".colorize(color: :red))
+        print(e.message.split("- ").dig(1))
+        print("")
+        exit(Errno::ENOENT::Errno)
       end
 
     end

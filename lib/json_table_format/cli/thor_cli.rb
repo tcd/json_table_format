@@ -46,7 +46,7 @@ module JsonTableFormat
         parser = JsonTableFormat::Classes::Parser.new(input)
         output = parser.format()
         if options[:overwrite]
-          Helpers.overwrite_file(file_path, output, options[:backup])
+          Helpers.overwrite_file(file_path, output, backup: options[:backup])
         else
           puts(output)
         end

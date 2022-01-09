@@ -26,14 +26,15 @@ module TestData
     VALUE_LENGTHS = {
       "type" => 9,
       "description" => 59,
-      "minimum" => 1,
+      "minimum" => 4,
     }.freeze()
 
     INPUT = <<~STR.freeze()
       {
           "firstName": {
               "type": "string",
-              "description": "The person's first name."
+              "description": "The person's first name.",
+              "minimum": null
           },
           "lastName": {
               "type": "string",
@@ -49,9 +50,9 @@ module TestData
 
     OUTPUT = <<~STR.gsub(/\n\z/, "").freeze()
       {
-        "firstName": { "type": "string",  "description": "The person's first name." },
+        "firstName": { "type": "string",  "description": "The person's first name.",                                  "minimum": null },
         "lastName":  { "type": "string",  "description": "The person's last name." },
-        "age":       { "type": "integer", "description": "Age in years which must be equal to or greater than zero.", "minimum": 0 }
+        "age":       { "type": "integer", "description": "Age in years which must be equal to or greater than zero.", "minimum": 0    }
       }
     STR
 

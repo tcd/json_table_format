@@ -96,7 +96,7 @@ module JsonTableFormat
       def error_file_not_found(e)
         print("File not found: ".colorize(color: :red))
         print(e.message.split("- ").dig(1))
-        print("")
+        print("\n")
         exit(Errno::ENOENT::Errno)
       end
 

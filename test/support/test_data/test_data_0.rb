@@ -20,12 +20,10 @@ module TestData
     VALUE_LENGTHS = {}.freeze()
 
     # @return [String]
-    INPUT = <<~STR.gsub(/\n/, "").freeze()
-    STR
+    INPUT = "".freeze()
 
     # @return [String]
-    OUTPUT = <<~STR.gsub(/\n/, "").freeze()
-    STR
+    OUTPUT = "".freeze()
 
   end
 end

@@ -30,7 +30,7 @@ module TestData
       "maximum" => 1,
     }.freeze()
 
-    INPUT = <<~STR.gsub(/\n/, "").freeze()
+    INPUT = <<~STR.freeze()
       [
           {
               "type": "string",
@@ -61,7 +61,7 @@ module TestData
       ]
     STR
 
-    OUTPUT = <<~STR.gsub(/\n/, "").freeze()
+    OUTPUT = <<~STR.freeze()
       [
         { "type": "string",  "description": "The person's first name.",                                  "required": true,  "optional": false },
         { "type": "integer", "description": "Age in years which must be equal to or greater than zero.", "required": false, "optional": true,  "minimum": 0 },

@@ -21,8 +21,6 @@ end
 
 $LOAD_PATH.unshift(File.expand_path("../lib", __dir__))
 require "json_table_format"
-require_relative "./support/test_data.rb"
-require "pry"
 
 require "minitest/autorun"
 require "minitest/focus"
@@ -31,6 +29,10 @@ Minitest::Reporters.use!([
   Minitest::Reporters::DefaultReporter.new(color: true),
   # Minitest::Reporters::SpecReporter.new,
 ])
+
+require "pretty_diffs"
+require "pry"
+require_relative "./support/test_data.rb"
 
 # ==============================================================================
 # Custom Assertions
@@ -92,6 +94,7 @@ end
 
 # Base class for tests
 class TestCase < Minitest::Test
+  include PrettyDiffs
 
   # Return path of a file to be used in tests.
   #

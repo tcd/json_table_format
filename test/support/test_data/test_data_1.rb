@@ -29,7 +29,7 @@ module TestData
       "minimum" => 1,
     }.freeze()
 
-    INPUT = <<~STR.gsub(/\n/, "").freeze()
+    INPUT = <<~STR.freeze()
       {
           "firstName": {
               "type": "string",
@@ -47,7 +47,7 @@ module TestData
       }
     STR
 
-    OUTPUT = <<~STR.gsub(/\n/, "").freeze()
+    OUTPUT = <<~STR.freeze()
       {
         "firstName": { "type": "string",  "description": "The person's first name." },
         "lastName":  { "type": "string",  "description": "The person's last name." },

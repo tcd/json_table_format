@@ -34,11 +34,11 @@ module JsonTableFormat
     # @param keys [Array<String>]
     # @return [Hash<String, Integer>]
     def self.get_key_lengths(keys)
-      # result = {}
-      # keys.each { |x| result[x] = (x.length + 2) } # they're all strings, add two for when they're quoted
-      # return result
+      result = {}
+      keys.each { |x| result[x] = (x.length + 2) } # they're all strings, add two for when they're quoted
+      return result
       # keys.reduce({}) { |total, current| total.merge({ current => (current.length + 2) }) }
-      return keys.reduce({}) { |x, y| x.merge({ y => (y.length + 2) }) }
+      # return keys.reduce({}) { |x, y| x.merge({ y => (y.length + 2) }) }
     end
 
   end

@@ -1,7 +1,12 @@
+require "json"
+
 module JsonTableFormat
   module Classes
     # Collects information required for formatting
     class Parser < Processor
+
+      # @return [String]
+      attr_accessor :output
 
       # @return [{:array, :object, :other}]
       attr_accessor :json_data_type
@@ -13,20 +18,23 @@ module JsonTableFormat
       # @return [void]
       def initialize(input_string)
         super()
-        self.is_invalid = false
+        self.output = ""
         self.json_data_type = Util::JsonDataType::OTHER
+        self.is_invalid = false
         self.input_string = input_string
         self.parse_json()
       end
 
       # @return [String]
       def format()
-        output = ""
-        return output unless self.valid?()
+        return self.output unless self.valid?()
+
         case self.json_data_type
-        when Util::JsonDataType::ARRAY  then ArrayFormatter.new(self).format()
-        when Util::JsonDataType::OBJECT then ObjectFormatter.new(self).format()
+        when Util::JsonDataType::ARRAY  then self.output = ArrayFormatter.new(self).format()
+        when Util::JsonDataType::OBJECT then self.output = ObjectFormatter.new(self).format()
         end
+
+        return self.output()
       end
 
       # @return [void]
@@ -34,8 +42,7 @@ module JsonTableFormat
         begin
           json = JSON.parse(self.input_string)
           self.input_json = json
-        rescue StandardError => e
-          binding.pry
+        rescue StandardError => _e
           self.is_invalid = true
           return nil
         end

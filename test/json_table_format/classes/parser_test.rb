@@ -21,7 +21,7 @@ module ClassesTests
     test("case 2 ARRAY")  { run_test_case_assertions(TestData::TestData2) }
     test("case 3 OBJECT") { run_test_case_assertions(TestData::TestData3) }
     test("case 4 ARRAY")  { run_test_case_assertions(TestData::TestData4) }
-    # test("case 5 ARRAY")  { run_test_case_assertions(TestData::TestData5) }
+    test("case 5 ARRAY")  { run_test_case_assertions(TestData::TestData5) }
 
   end
 end

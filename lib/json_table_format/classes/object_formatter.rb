@@ -16,6 +16,7 @@ module JsonTableFormat
         self.keys                   = parser_arg.keys
         self.key_lengths            = parser_arg.key_lengths
         self.value_lengths          = parser_arg.value_lengths
+        self.value_types            = parser_arg.value_types
         self.longest_top_key_length = parser_arg.longest_top_key_length
       end
 
@@ -32,6 +33,7 @@ module JsonTableFormat
           output << (" " * self.indent) + top_key_string + " {"
           j = 1
           self.keys.each do |key|
+            value_type           = self.value_types[key]
             value                = object.dig(key)
             is_last_entry        = (j == entry_count)
             longest_key_length   = self.key_lengths[key.to_s] + 1
@@ -44,7 +46,11 @@ module JsonTableFormat
             value_text = ""
 
             if value.nil?
-              value_text << " null,".ljust(longest_value_length, " ")
+              if value_type == Util::JsonValueType::NUMBER
+                value_text << " null,".rjust(longest_value_length, " ")
+              else
+                value_text << " null,".ljust(longest_value_length, " ")
+              end
             elsif value.is_a?(String)
               value_text << " \"#{value}\",".ljust(longest_value_length, " ")
             elsif value.is_a?(Numeric)

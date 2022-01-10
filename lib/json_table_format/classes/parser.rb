@@ -75,6 +75,7 @@ module JsonTableFormat
         self.keys          = Util.get_array_keys(self.input_json)
         self.value_lengths = Util.get_longest_value_lengths_for_array(self.input_json)
         self.key_lengths   = Util.get_key_lengths(self.keys)
+        self.value_types   = Util.determine_json_value_types_for_array(self.input_json)
       end
 
       # @return [void]
@@ -84,6 +85,7 @@ module JsonTableFormat
         self.top_keys               = self.input_json.keys().uniq()
         self.longest_top_key_length = (self.top_keys.map(&:length).max + 2) # they're all strings, add two for when they're quoted
         self.key_lengths            = Util.get_key_lengths(self.keys)
+        self.value_types            = Util.determine_json_value_types_for_object(self.input_json)
       end
 
     end

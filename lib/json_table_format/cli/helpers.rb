@@ -38,7 +38,7 @@ module JsonTableFormat
       # @return [void]
       def self.overwrite_file(file_path, content, backup: false)
         self.backup_file(file_path) if (backup)
-        File.write(file_path, content, mode: "w+")
+        File.write(file_path, (content + "\n"), mode: "w+")
       end
 
       # Return the current contents of standard input as a string.

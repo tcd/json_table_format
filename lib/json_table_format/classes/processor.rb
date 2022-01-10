@@ -16,6 +16,8 @@ module JsonTableFormat
       attr_accessor :key_lengths
       # @return [Hash{String => Number}]
       attr_accessor :value_lengths
+      # @return [Hash{String => Symbol}]
+      attr_accessor :value_types
 
       # @return [Array<String>]
       attr_accessor :top_keys
@@ -34,6 +36,7 @@ module JsonTableFormat
         self.keys                   = []
         self.key_lengths            = {}
         self.value_lengths          = {}
+        self.value_types            = {}
         self.top_keys               = []
         self.longest_top_key_length = 0
       end

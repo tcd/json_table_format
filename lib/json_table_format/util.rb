@@ -1,8 +1,10 @@
 require "json_table_format/util/json_data_type"
+require "json_table_format/util/json_value_type"
 require "json_table_format/util/get_keys"
 require "json_table_format/util/get_length"
 require "json_table_format/util/get_longest_lengths"
 require "json_table_format/util/determine_json_data_type"
+require "json_table_format/util/determine_json_value_type"
 
 module JsonTableFormat
   # Utility code

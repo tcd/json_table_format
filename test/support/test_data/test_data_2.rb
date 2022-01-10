@@ -63,10 +63,10 @@ module TestData
 
     OUTPUT = <<~STR.gsub(/\n\z/, "").freeze()
       [
-        { "type": "string",  "description": "The person's first name.",                                  "required": true,  "optional": false },
-        { "type": "integer", "description": "Age in years which must be equal to or greater than zero.", "required": false, "optional": true,  "minimum": 0 },
-        { "type": "string",  "description": "The person's last name.",                                   "required": true,  "optional": false },
-        { "type": "integer", "description": "Favorite number",                                           "required": true,  "optional": true,  "maximum": 0 }
+        { "type": "string",  "description": "The person's first name.",                                  "required": true,  "optional": false, "minimum": null, "maximum": null },
+        { "type": "integer", "description": "Age in years which must be equal to or greater than zero.", "required": false, "optional": true,  "minimum":    0, "maximum": null },
+        { "type": "string",  "description": "The person's last name.",                                   "required": true,  "optional": false, "minimum": null, "maximum": null },
+        { "type": "integer", "description": "Favorite number",                                           "required": true,  "optional": true,  "minimum": null, "maximum":    0 }
       ]
     STR
 

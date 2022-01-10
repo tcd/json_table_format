@@ -3,4 +3,3 @@
   "lastName":  { "type": "string",  "description": "The person's last name.",                                   "minimum": null },
   "age":       { "type": "integer", "description": "Age in years which must be equal to or greater than zero.", "minimum":    0 }
 }
-

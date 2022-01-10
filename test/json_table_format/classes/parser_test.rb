@@ -17,7 +17,7 @@ module ClassesTests
       assert_equal(case_data::OUTPUT, output)
     end
 
-    # test("case 1 OBJECT") { run_test_case_assertions(TestData::TestData1) }
+    test("case 1 OBJECT") { run_test_case_assertions(TestData::TestData1) }
     test("case 2 ARRAY")  { run_test_case_assertions(TestData::TestData2) }
     test("case 3 OBJECT") { run_test_case_assertions(TestData::TestData3) }
     test("case 4 ARRAY")  { run_test_case_assertions(TestData::TestData4) }

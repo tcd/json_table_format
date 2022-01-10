@@ -10,6 +10,7 @@ module JsonTableFormat
       def initialize(parser_arg)
         super()
         self.parser        = parser_arg
+        self.indent        = parser_arg.indent
         self.input_json    = parser_arg.input_json
         self.top_keys      = parser_arg.top_keys
         self.keys          = parser_arg.keys
@@ -24,10 +25,11 @@ module JsonTableFormat
         top_entry_count = self.input_json.length
         self.input_json.each_with_index do |object, i|
           is_last_top_entry = ((i + 1) == top_entry_count)
-          entry_count       = object.values.length
-          output << "  {"
+          entry_count       = self.keys.length
+          output << (" " * self.indent) + "{"
           j = 1
-          object.each do |key, value|
+          self.keys.each do |key|
+            value                = object.dig(key)
             is_last_entry        = (j == entry_count)
             longest_key_length   = self.key_lengths[key.to_s] + 1
             longest_value_length = self.value_lengths[key.to_s] + 2
@@ -38,7 +40,9 @@ module JsonTableFormat
 
             value_text = ""
 
-            if value.is_a?(String)
+            if value.nil?
+              value_text << " null,".ljust(longest_value_length, " ")
+            elsif value.is_a?(String)
               value_text << " \"#{value}\",".ljust(longest_value_length, " ")
             elsif value.is_a?(Numeric)
               value_text << " #{value},".rjust(longest_value_length, " ")

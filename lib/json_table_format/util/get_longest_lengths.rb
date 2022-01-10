@@ -8,7 +8,6 @@ module JsonTableFormat
       keys = get_array_keys(array)
       array.each do |object|
         keys.each do |key|
-          next unless object.key?(key)
           longest = result.dig(key)
           value   = object.dig(key)
           current = get_length(value)

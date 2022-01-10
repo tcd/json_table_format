@@ -5,15 +5,12 @@ module JsonTableFormat
       # @return [Parser]
       attr_accessor :parser
 
-      # @return [String]
-      attr_accessor :indent
-
       # @param parser_arg [Parser]
       # @return [void]
       def initialize(parser_arg)
         super()
-        self.indent                 = "  "
         self.parser                 = parser_arg
+        self.indent                 = parser_arg.indent
         self.input_json             = parser_arg.input_json
         self.top_keys               = parser_arg.top_keys
         self.keys                   = parser_arg.keys
@@ -30,11 +27,12 @@ module JsonTableFormat
         i = 1
         self.input_json.each do |top_key, object|
           is_last_top_entry = (i == top_entry_count)
-          entry_count       = object.values.length
+          entry_count       = self.keys.length
           top_key_string    = "\"#{top_key}\":".ljust(self.longest_top_key_length + 1, " ")
-          output << self.indent + top_key_string + " {"
+          output << (" " * self.indent) + top_key_string + " {"
           j = 1
-          object.each do |key, value|
+          self.keys.each do |key|
+            value                = object.dig(key)
             is_last_entry        = (j == entry_count)
             longest_key_length   = self.key_lengths[key.to_s] + 1
             longest_value_length = self.value_lengths[key.to_s] + 2
@@ -45,7 +43,9 @@ module JsonTableFormat
 
             value_text = ""
 
-            if value.is_a?(String)
+            if value.nil?
+              value_text << " null,".ljust(longest_value_length, " ")
+            elsif value.is_a?(String)
               value_text << " \"#{value}\",".ljust(longest_value_length, " ")
             elsif value.is_a?(Numeric)
               value_text << " #{value},".rjust(longest_value_length, " ")

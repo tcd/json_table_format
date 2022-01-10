@@ -22,8 +22,12 @@ module JsonTableFormat
       # @return [Integer]
       attr_accessor :longest_top_key_length
 
+      # @return [Integer]
+      attr_accessor :indent
+
       # @return [void]
       def initialize()
+        self.indent                 = 2
         self.input_string           = ""
         self.input_json             = {}
         self.element_count          = 0

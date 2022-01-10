@@ -26,8 +26,8 @@ module TestData
       "description" => 59,
       "required" => 5,
       "optional" => 5,
-      "minimum" => 1,
-      "maximum" => 1,
+      "minimum" => 4,
+      "maximum" => 4,
     }.freeze()
 
     INPUT = <<~STR.freeze()

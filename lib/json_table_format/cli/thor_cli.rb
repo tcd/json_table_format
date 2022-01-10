@@ -1,7 +1,6 @@
-require "thor"
 require "fileutils"
-
-require "pry"
+require "pathname"
+require "thor"
 
 # rubocop:disable Style/DocumentationMethod
 module JsonTableFormat
@@ -11,7 +10,7 @@ module JsonTableFormat
 
       default_task(:default)
 
-      class_option(:verbose, type: :boolean, default: false, description: "print extra output")
+      # class_option(:verbose, type: :boolean, default: false, description: "print extra output")
 
       def self.exit_on_failure?()
         return true
@@ -37,15 +36,38 @@ module JsonTableFormat
       # File
       # ========================================================================
 
-      option(:overwrite, type: :boolean, default: false, desc: "format file contents in place")
-      option(:backup, type: :boolean, default: false, desc: "if using 'overwrite', create a backup of the original file")
+      option(
+        :output,
+        type: :string,
+        default: nil,
+        aliases: ["-o"],
+        desc: "file to write output to",
+        banner: "PATH",
+      )
+      option(
+        :in_place,
+        type: :boolean,
+        default: false,
+        aliases: ["-i"],
+        desc: "format file contents in place",
+      )
+      option(
+        :backup,
+        type:
+        :boolean,
+        default: false,
+        aliases: ["-b"],
+        desc: "if using 'in_place', backup the original file",
+      )
       map(["-f", "--file"] => :file)
-      desc("-f [FILE]", "file - Format a file")
+      desc("-f, --file [FILE]", "file - Format a file")
       def file(file_path)
         input  = File.read(file_path)
         parser = JsonTableFormat::Classes::Parser.new(input)
         output = parser.format()
-        if options[:overwrite]
+        if ((options[:output]&.length || 0) > 0)
+          Helpers.overwrite_file(options[:output], output)
+        elsif options[:in_place]
           Helpers.overwrite_file(file_path, output, backup: options[:backup])
         else
           puts(output)
@@ -78,7 +100,7 @@ module JsonTableFormat
       # ========================================================================
 
       map(["-v", "--version"] => :version)
-      desc("version", "version - Display version")
+      desc("-v, --version", "version - Display version")
       def version()
         puts("json-table-format version #{JsonTableFormat::VERSION}")
         exit(0)
